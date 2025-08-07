@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -66,14 +67,25 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'employeecrud_db',  # The database name you created
+#         'USER': 'postgres',            # The username you created
+#         'PASSWORD': '1996',    # The password for the user
+#         'HOST': 'localhost',            # Or the IP address if your DB is on another server
+#         'PORT': '5432',                 # Default PostgreSQL port
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'employeecrud_db',  # The database name you created
-        'USER': 'postgres',            # The username you created
-        'PASSWORD': '1996',    # The password for the user
-        'HOST': 'localhost',            # Or the IP address if your DB is on another server
-        'PORT': '5432',                 # Default PostgreSQL port
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT', '5432'), # Use 5432 as default if not set
     }
 }
 
