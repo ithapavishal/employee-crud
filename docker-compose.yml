@@ -33,7 +33,7 @@ services:
       - django_app_vol:/app
 
 networks:
-  mydjangonetwork:
+  mydjangocomposenetwork:
 
 volumes:
   pg_db_vol:
